@@ -1,4 +1,9 @@
+# If you want the boxplots (pandas + matplotlib)
+# source activate py27
+# pythonw csv2frame.py
+
 import pandas as pd
+import matplotlib.pyplot as plt
 INPUT_FILENAME = 'day_per_row.csv'
 
 def filename2frame(fn):
@@ -21,4 +26,10 @@ def filename2frame(fn):
             word_list.append(columns[i])
     return pd.DataFrame({'date':date_list, 'word':word_list})
 
-print(filename2frame(INPUT_FILENAME))
+D = filename2frame(INPUT_FILENAME)
+print(D)
+
+E = pd.DataFrame({'c1':[1,2,3,4,5,3,3,2],
+                 'c2':[2,2,3,3,4,9,2,1]})
+E.boxplot()
+plt.show()
