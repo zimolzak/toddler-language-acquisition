@@ -1,11 +1,13 @@
 import pandas as pd
-lines = open('day_per_row.csv', 'r').read().splitlines()
-date_list = []
-word_list = []
-for L in lines:
+INPUT_FILENAME = 'day_per_row.csv'
+LINES = open(INPUT_FILENAME, 'r').read().splitlines()
+DATE_LIST = []
+WORD_LIST = []
+for L in LINES:
     line_list = L.split(',')
     for i in range(1,len(line_list)): # start w/ 1 not 0.
-        date_list.append(line_list[0])
-        word_list.append(line_list[i])
-print(date_list)
-print(word_list)
+        DATE_LIST.append(line_list[0])
+        WORD_LIST.append(line_list[i])
+
+DF = pd.DataFrame({'date':DATE_LIST, 'word':WORD_LIST})
+print(DF)
