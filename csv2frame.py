@@ -32,5 +32,7 @@ D = filename2frame(INPUT_FILENAME)
 #                  'c2':[2,2,3,3,4,9,2,1]})
 # E.boxplot()
 # plt.show()
-# D.describe()
-print(D.sort_values(by='word'))
+
+print(D.sort('word')) # pandas 0.14.1
+print()
+print(D.describe())
