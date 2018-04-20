@@ -33,6 +33,7 @@ D = filename2frame(INPUT_FILENAME)
 # E.boxplot()
 # plt.show()
 
-print(D.sort('word')) # pandas 0.14.1
+#print(D.sort('word')) # pandas 0.14.1
+print(D)
 print()
 print(D.describe())
