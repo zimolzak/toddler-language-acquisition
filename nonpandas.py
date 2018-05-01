@@ -22,7 +22,25 @@ def filename2frame(fn):
                 word_list.append(columns[i])
     return date_list, word_list
 
+def cumulative_by_date(date_list, word_list):
+    uniq_dates = list(set(date_list))
+    uniq_dates.sort()
+    cumulative_list = []
+    for u in uniq_dates:
+        N = date_list.count(u)
+        if len(cumulative_list) == 0:
+            cumulative_list.append(N)
+        else:
+            cumulative_list.append(cumulative_list[-1] + N)
+    return uniq_dates, cumulative_list
+
 (D, W) = filename2frame(INPUT_FILENAME)
 
 for (di, wi) in zip(D, W):
-    print(wi, di)
+    print(di, wi)
+
+print()
+
+UD, CL = cumulative_by_date(D, W)
+for (ui, ci) in zip(UD, CL):
+    print(ui, ci)
