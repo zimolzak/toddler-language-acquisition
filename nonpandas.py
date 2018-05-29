@@ -1,5 +1,12 @@
 #import matplotlib.pyplot as plt
+from sys import argv
 INPUT_FILENAME = 'day_per_row.csv'
+
+PRINT_CUMULATIVE_ONLY = False
+if len(argv) == 1:
+    pass
+elif argv[1] == '--spark':
+    PRINT_CUMULATIVE_ONLY = True
 
 def filename2frame(fn):
     """Make two lists a shorthand CSV.
@@ -36,11 +43,14 @@ def cumulative_by_date(date_list, word_list):
 
 (D, W) = filename2frame(INPUT_FILENAME)
 
-for (di, wi) in zip(D, W):
-    print(di, wi)
-
-print()
+if not PRINT_CUMULATIVE_ONLY:
+    for (di, wi) in zip(D, W):
+        print(di, wi)
+    print()
 
 UD, CL = cumulative_by_date(D, W)
 for (ui, ci) in zip(UD, CL):
-    print(ui, ci)
+    if PRINT_CUMULATIVE_ONLY:
+        print(ci)
+    else:
+        print(ui, ci)
